@@ -9,3 +9,7 @@ target_include_directories(model_c PUBLIC "../broker")
 target_sources(model_a PUBLIC model_a.cpp)
 target_sources(model_b PUBLIC model_b.cpp)
 target_sources(model_c PUBLIC model_c.cpp)
+
+target_link_libraries(model_a PUBLIC fmt::fmt)
+target_link_libraries(model_b PUBLIC fmt::fmt)
+target_link_libraries(model_c PUBLIC fmt::fmt)
