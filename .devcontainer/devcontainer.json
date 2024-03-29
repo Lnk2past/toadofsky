@@ -16,5 +16,6 @@
       }
     }
   },
-  "onCreateCommand": "apt update && apt install cmake -yr"
+  "onCreateCommand": "apt update && apt install cmake pipx -y && pipx ensurepath",
+  "updateContentCommand": "pipx install conan"
 }
