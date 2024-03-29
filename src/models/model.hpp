@@ -1,13 +1,13 @@
 #pragma once
-#include <condition_variable>
-#include <mutex>
+#include <latch>
 #include <thread>
 
+struct Broker;
 struct Model
 {
     virtual ~Model() = default;
-    virtual auto initialize() -> void = 0;
-    virtual auto update() -> void = 0;
-    virtual auto run(std::stop_token, std::condition_variable &) -> void = 0;
+    virtual auto initialize(Broker &) -> void = 0;
+    virtual auto update(Broker &) -> void = 0;
+    virtual auto run(std::stop_token, std::latch &, Broker &) -> void = 0;
     virtual auto finalize() -> void = 0;
 };

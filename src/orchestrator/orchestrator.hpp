@@ -6,11 +6,12 @@
 
 #include "model.hpp"
 
+struct Broker;
 struct Orchestrator
 {
     Orchestrator();
 
-    auto run() -> void;
+    auto run(Broker &broker) -> void;
 
     std::vector<std::unique_ptr<Model>> models{};
     std::vector<std::jthread> threads{};

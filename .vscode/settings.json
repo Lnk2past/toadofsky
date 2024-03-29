@@ -48,6 +48,22 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "thread": "cpp",
-        "typeinfo": "cpp"
-    }
+        "typeinfo": "cpp",
+        "condition_variable": "cpp",
+        "mutex": "cpp",
+        "queue": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "charconv": "cpp",
+        "iomanip": "cpp",
+        "latch": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "span": "cpp",
+        "sstream": "cpp",
+        "cinttypes": "cpp",
+        "variant": "cpp",
+        "format": "cpp"
+    },
+    "C_Cpp.default.cppStandard": "c++20"
 }
