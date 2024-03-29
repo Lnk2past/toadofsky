@@ -1,30 +1,36 @@
-#include <condition_variable>
-#include <mutex>
 #include <fmt/format.h>
+#include <fmt/ranges.h>
+
+#include "broker.hpp"
+#include "message.hpp"
 #include "model_b.hpp"
 
-auto ModelB::initialize() -> void
+auto ModelB::initialize(Broker &broker) -> void
 {
-    fmt::print("Initializing Model B\n");
+    broker.subscribe("BAR", this);
 }
 
-auto ModelB::update() -> void
+auto ModelB::update(Broker &) -> void
 {
-    fmt::print("Updating Model B\n");
+    auto incoming_messages = get_messages();
+    for (auto message : incoming_messages)
+    {
+        if (message->topic == "BAR")
+        {
+            fmt::print("Got a BAR! {}\n", std::dynamic_pointer_cast<MessagePayload<int, double>>(message)->payload);
+        }
+    }
 }
 
-auto ModelB::run(std::stop_token stop_token, std::condition_variable &cv) -> void
+auto ModelB::run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void
 {
-    auto m = std::mutex{};
-    auto lk = std ::unique_lock(m);
-    cv.wait(lk);
+    latch.arrive_and_wait();
     while (!stop_token.stop_requested())
     {
-        update();
+        update(broker);
     }
 }
 
 auto ModelB::finalize() -> void
 {
-    fmt::print("Finalizing Model B\n");
 }

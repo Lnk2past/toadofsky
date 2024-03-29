@@ -6,5 +6,6 @@
 auto main() -> int
 {
     auto orchestrator = Orchestrator{};
-    orchestrator.run();
+    auto broker = Broker{};
+    orchestrator.run(broker);
 }

@@ -1,28 +1,37 @@
 #include <fmt/format.h>
+#include <fmt/ranges.h>
+
+#include "broker.hpp"
+#include "message.hpp"
 #include "model_a.hpp"
 
-auto ModelA::initialize() -> void
+auto ModelA::initialize(Broker &broker) -> void
 {
-    fmt::print("Initializing Model A\n");
+    broker.subscribe("FOO", this);
 }
 
-auto ModelA::update() -> void
+auto ModelA::update(Broker &broker) -> void
 {
-    fmt::print("Updating Model A\n");
+    auto incoming_messages = get_messages();
+    for (auto message : incoming_messages)
+    {
+        if (message->topic == "FOO")
+        {
+            fmt::print("Got a FOO! {}\n", std::dynamic_pointer_cast<MessagePayload<int>>(message)->payload);
+            broker.publish<int, double>("BAR", 9000, 3.14159265359);
+        }
+    }
 }
 
-auto ModelA::run(std::stop_token stop_token, std::condition_variable &cv) -> void
+auto ModelA::run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void
 {
-    auto m = std::mutex{};
-    auto lk = std ::unique_lock(m);
-    cv.wait(lk);
+    latch.arrive_and_wait();
     while (!stop_token.stop_requested())
     {
-        update();
+        update(broker);
     }
 }
 
 auto ModelA::finalize() -> void
 {
-    fmt::print("Finalizing Model A\n");
 }
