@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "message.hpp"
+#include "broker/message.hpp"
 
 struct Subscriber;
 struct Broker

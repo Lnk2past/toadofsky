@@ -1,7 +1,7 @@
 #pragma once
 
-#include "model.hpp"
-#include "subscriber.hpp"
+#include "models/model.hpp"
+#include "broker/subscriber.hpp"
 
 struct ModelC : Model, Subscriber
 {

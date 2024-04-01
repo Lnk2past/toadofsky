@@ -4,15 +4,14 @@
 #include <thread>
 #include <vector>
 
-#include "model.hpp"
-
 struct Broker;
+struct Model;
 struct Orchestrator
 {
-    Orchestrator();
+    auto register_model(Model *model) -> void;
 
     auto run(Broker &broker) -> void;
 
-    std::vector<std::unique_ptr<Model>> models{};
-    std::vector<std::jthread> threads{};
+    std::vector<std::unique_ptr<Model>> models;
+    std::vector<std::jthread> threads;
 };

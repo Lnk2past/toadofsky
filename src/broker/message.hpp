@@ -18,7 +18,7 @@ struct MessagePayload : Message
 {
     MessagePayload(std::string topic_, T &&...payload_)
         : Message{topic_},
-          payload{std::forward<T>(payload_)...}
+          payload{std::move(payload_)...}
     {
     }
 
