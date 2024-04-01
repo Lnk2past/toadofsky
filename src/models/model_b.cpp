@@ -12,8 +12,7 @@ auto ModelB::initialize(Broker &broker) -> void
 
 auto ModelB::update(Broker &) -> void
 {
-    auto incoming_messages = get_messages();
-    for (auto message : incoming_messages)
+    for (auto message : get_messages())
     {
         if (message->topic == "BAR")
         {
