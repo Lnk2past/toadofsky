@@ -4,20 +4,15 @@
 
 #include <fmt/format.h>
 
-#include "broker.hpp"
-#include "model_a.hpp"
-#include "model_b.hpp"
-#include "model_c.hpp"
-#include "orchestrator.hpp"
+#include "broker/broker.hpp"
+#include "models/model.hpp"
+#include "orchestrator/orchestrator.hpp"
 
 using namespace std::chrono_literals;
 
-Orchestrator::Orchestrator()
+auto Orchestrator::register_model(Model *model) -> void
 {
-    models.reserve(3);
-    models.push_back(std::make_unique<ModelA>());
-    models.push_back(std::make_unique<ModelB>());
-    models.push_back(std::make_unique<ModelC>());
+    models.emplace_back(model);
 }
 
 auto Orchestrator::run(Broker &broker) -> void

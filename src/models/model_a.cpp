@@ -1,9 +1,9 @@
 #include <fmt/format.h>
 #include <fmt/ranges.h>
 
-#include "broker.hpp"
-#include "message.hpp"
-#include "model_a.hpp"
+#include "broker/broker.hpp"
+#include "broker/message.hpp"
+#include "models/model_a.hpp"
 
 auto ModelA::initialize(Broker &broker) -> void
 {

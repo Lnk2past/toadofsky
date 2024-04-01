@@ -6,7 +6,7 @@
 
 #include <fmt/format.h>
 
-#include "message.hpp"
+#include "broker/message.hpp"
 
 struct Subscriber
 {
