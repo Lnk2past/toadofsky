@@ -1,5 +1,7 @@
 # Toadofsky
 
+![](toadofsky.png)
+
 This is an educational endeavor into learning a bit more about multithreading, orchestration, and messaging using C++20. Some goals, which will absolutely change as I experiement and mess around with it all:
 
 * Orchestration of (synchronization between) threads should be be flexible, should be able to switch between synchronous, asynchronous + fixed rate synchronization, and purely asynchronous
@@ -52,8 +54,3 @@ There is a debug launch configuration if you need debugging, but otherwise you c
 ```shell
 ./build/<CONFIG>/src/toadofsky
 ```
-
-## Mascot
-
-![](toadofsky.png)
-
