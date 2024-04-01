@@ -6,6 +6,16 @@
 			"label": "Conan: build",
 			"command": "conan build . --build=missing",
 			"group": {
+				"kind": "build"
+			},
+			"problemMatcher": [],
+			"detail": "Conan build task"
+		},
+		{
+			"type": "shell",
+			"label": "Debug Conan: build",
+			"command": "conan build . --build=missing -s build_type=Debug",
+			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
