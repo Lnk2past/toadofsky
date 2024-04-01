@@ -6,11 +6,10 @@
 
 auto main() -> int
 {
+    auto broker = Broker{};
     auto orchestrator = Orchestrator{};
     orchestrator.register_model(new ModelA);
     orchestrator.register_model(new ModelB);
     orchestrator.register_model(new ModelC);
-
-    auto broker = Broker{};
     orchestrator.run(broker);
 }

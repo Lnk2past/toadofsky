@@ -12,8 +12,7 @@ auto ModelA::initialize(Broker &broker) -> void
 
 auto ModelA::update(Broker &broker) -> void
 {
-    auto incoming_messages = get_messages();
-    for (auto message : incoming_messages)
+    for (auto message : get_messages())
     {
         if (message->topic == "FOO")
         {

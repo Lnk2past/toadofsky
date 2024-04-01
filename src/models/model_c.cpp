@@ -16,7 +16,6 @@ auto ModelC::initialize(Broker &broker) -> void
 auto ModelC::update(Broker &broker) -> void
 {
     broker.publish<int>("FOO", 1337);
-    std::this_thread::sleep_for(2s);
 }
 
 auto ModelC::run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void
@@ -25,6 +24,7 @@ auto ModelC::run(std::stop_token stop_token, std::latch &latch, Broker &broker) 
     while (!stop_token.stop_requested())
     {
         update(broker);
+        std::this_thread::sleep_for(2s);
     }
 }
 
