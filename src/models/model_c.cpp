@@ -1,33 +1,6 @@
-#include <chrono>
-#include <fmt/format.h>
-#include <fmt/ranges.h>
-
-#include "broker/broker.hpp"
-#include "broker/message.hpp"
 #include "models/model_c.hpp"
 
-using namespace std::chrono_literals;
-
-auto ModelC::initialize(Broker &broker) -> void
+auto ModelC::update() -> void
 {
-    broker.subscribe("BAR", this);
-}
-
-auto ModelC::update(Broker &broker) -> void
-{
-    broker.publish<int>("FOO", 1337);
-}
-
-auto ModelC::run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void
-{
-    latch.arrive_and_wait();
-    while (!stop_token.stop_requested())
-    {
-        update(broker);
-        std::this_thread::sleep_for(2s);
-    }
-}
-
-auto ModelC::finalize() -> void
-{
+    data += 1;
 }

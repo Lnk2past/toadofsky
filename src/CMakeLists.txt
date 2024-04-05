@@ -1,5 +1,6 @@
 # add_subdirectory(broker)
 add_subdirectory(models)
+add_subdirectory(modules)
 add_subdirectory(orchestrator)
 
 add_executable(toadofsky main.cpp)

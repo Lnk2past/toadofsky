@@ -1,14 +1,11 @@
 #pragma once
 
 #include "models/model.hpp"
-#include "broker/subscriber.hpp"
 
-struct ModelA : Model, Subscriber
+struct ModelA : Model
 {
-    ModelA() = default;
-    ~ModelA() = default;
-    auto initialize(Broker &broker) -> void override;
-    auto update(Broker &broker) -> void override;
-    auto run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void override;
-    auto finalize() -> void override;
+    auto update() -> void override;
+
+    int data1{};
+    double data2{};
 };

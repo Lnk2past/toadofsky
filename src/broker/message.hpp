@@ -16,9 +16,9 @@ struct Message
 template <typename... T>
 struct MessagePayload : Message
 {
-    MessagePayload(std::string topic_, T &&...payload_)
+    MessagePayload(std::string topic_, T... payload_)
         : Message{topic_},
-          payload{std::move(payload_)...}
+          payload{std::make_tuple(payload_...)}
     {
     }
 
