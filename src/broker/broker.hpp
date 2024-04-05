@@ -17,9 +17,9 @@ struct Broker
     }
 
     template <typename... T>
-    auto publish(std::string topic, T &&...payload)
+    auto publish(std::string topic, T... payload)
     {
-        auto sharable_message = std::make_shared<MessagePayload<T...>>(topic, std::forward<T>(payload)...);
+        auto sharable_message = std::make_shared<MessagePayload<T...>>(topic, payload...);
         std::ranges::for_each(subscriptions[topic], [sharable_message](auto *subscriber)
                               { subscriber->receive(sharable_message); });
     }

@@ -11,13 +11,18 @@ auto ModuleC::initialize(Broker &broker) -> void
     broker.subscribe("BAR", this);
 }
 
+auto ModuleC::update(Broker &broker) -> void
+{
+    model.update();
+    broker.publish<int>("FOO", model.data);
+}
+
 auto ModuleC::run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void
 {
     latch.arrive_and_wait();
     while (!stop_token.stop_requested())
     {
-        model.update();
-        broker.publish<int>("FOO", model.data);
+        update(broker);
         std::this_thread::sleep_for(2s);
     }
 }
