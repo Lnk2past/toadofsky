@@ -6,13 +6,13 @@
 #include "orchestrator/threadpool.hpp"
 
 struct Broker;
-struct Model;
+struct Module;
 struct PoolOrchestrator
 {
-    auto register_model(Model *model) -> void;
+    auto register_model(Module *module) -> void;
 
     auto run(Broker &broker) -> void;
 
-    std::vector<std::unique_ptr<Model>> models;
+    std::vector<std::unique_ptr<Module>> modules;
     ThreadPool<3> threadpool{};
 };
