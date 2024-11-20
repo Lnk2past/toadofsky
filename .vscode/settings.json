@@ -63,6 +63,7 @@
         "sstream": "cpp",
         "cinttypes": "cpp",
         "variant": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "barrier": "cpp"
     }
 }
