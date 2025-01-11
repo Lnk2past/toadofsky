@@ -43,7 +43,6 @@ struct ThreadPool
         for (auto &thread : threads)
         {
             thread.request_stop();
-            thread.join();
         }
     }
 

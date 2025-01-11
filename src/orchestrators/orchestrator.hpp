@@ -12,6 +12,6 @@ struct Orchestrator
 
     auto run(Broker &broker) -> void;
 
-    std::vector<std::unique_ptr<Module>> modules;
+    std::vector<Module *> modules;
     std::vector<std::jthread> threads;
 };

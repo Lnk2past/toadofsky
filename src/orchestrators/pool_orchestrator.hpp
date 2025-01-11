@@ -3,7 +3,7 @@
 #include <memory>
 #include <vector>
 
-#include "orchestrator/threadpool.hpp"
+#include "orchestrators/threadpool.hpp"
 
 struct Broker;
 struct Module;
@@ -13,6 +13,6 @@ struct PoolOrchestrator
 
     auto run(Broker &broker) -> void;
 
-    std::vector<std::unique_ptr<Module>> modules;
+    std::vector<Module *> modules;
     ThreadPool<3> threadpool{};
 };

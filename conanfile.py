@@ -8,7 +8,7 @@ class toadofsky(ConanFile):
     generators = 'CMakeToolchain', 'CMakeDeps'
 
     def requirements(self):
-        self.requires("fmt/10.2.1")
+        self.requires("fmt/11.1.1")
 
     def build(self):
         cmake = CMake(self)

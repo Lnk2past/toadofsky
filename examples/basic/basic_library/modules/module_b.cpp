@@ -10,7 +10,7 @@ auto ModuleB::initialize(Broker &broker) -> void
     broker.subscribe("BAR", this);
 }
 
-auto ModuleB::update(Broker &) -> void
+auto ModuleB::update(Broker &) -> bool
 {
     for (auto message : get_messages())
     {
@@ -20,6 +20,7 @@ auto ModuleB::update(Broker &) -> void
             fmt::print("Got a BAR! {}\n", std::dynamic_pointer_cast<MessagePayload<int, double>>(message)->payload);
         }
     }
+    return true;
 }
 
 auto ModuleB::run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void

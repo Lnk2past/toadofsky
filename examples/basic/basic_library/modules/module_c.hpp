@@ -1,17 +1,17 @@
 #pragma once
 
 #include "broker/subscriber.hpp"
-#include "models/model_a.hpp"
+#include "models/model_c.hpp"
 #include "modules/module.hpp"
 
-struct ModuleA : Module, Subscriber
+struct ModuleC : Module, Subscriber
 {
-    ModuleA() = default;
-    ~ModuleA() = default;
+    ModuleC() = default;
+    ~ModuleC() = default;
     auto initialize(Broker &broker) -> void override;
-    auto update(Broker &broker) -> void override;
+    auto update(Broker &broker) -> bool override;
     auto run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void override;
     auto finalize() -> void override;
 
-    ModelA model;
+    ModelC model{};
 };
