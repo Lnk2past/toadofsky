@@ -14,5 +14,3 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(src)
-
-add_subdirectory(examples)

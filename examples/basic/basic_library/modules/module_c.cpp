@@ -11,10 +11,11 @@ auto ModuleC::initialize(Broker &broker) -> void
     broker.subscribe("BAR", this);
 }
 
-auto ModuleC::update(Broker &broker) -> void
+auto ModuleC::update(Broker &broker) -> bool
 {
     model.update();
     broker.publish<int>("FOO", model.data);
+    return true;
 }
 
 auto ModuleC::run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void

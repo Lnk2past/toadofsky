@@ -10,7 +10,7 @@ auto ModuleA::initialize(Broker &broker) -> void
     broker.subscribe("FOO", this);
 }
 
-auto ModuleA::update(Broker &broker) -> void
+auto ModuleA::update(Broker &broker) -> bool
 {
     for (auto message : get_messages())
     {
@@ -21,6 +21,7 @@ auto ModuleA::update(Broker &broker) -> void
             broker.publish<int, double>("BAR", model.data1, model.data2);
         }
     }
+    return true;
 }
 
 auto ModuleA::run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void
