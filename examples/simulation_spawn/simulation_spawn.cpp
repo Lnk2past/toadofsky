@@ -1,7 +1,8 @@
-#include "broker/broker.hpp"
-#include "orchestrators/orchestrator.hpp"
 #include "components/modules/nbody_module.hpp"
 #include "components/modules/spawn_module.hpp"
+
+#include "toadofsky/broker/broker.hpp"
+#include "toadofsky/orchestrator/orchestrator.hpp"
 
 #include <chrono>
 #include <thread>
@@ -13,8 +14,8 @@ auto main() -> int
     auto nbody_module = NBodyModule{};
     auto spawn_module = SpawnModule{};
 
-    auto broker = Broker{};
-    auto orchestrator = Orchestrator{};
+    auto broker = toadofsky::Broker{};
+    auto orchestrator = toadofsky::Orchestrator{};
     orchestrator.register_model(&nbody_module);
     orchestrator.register_model(&spawn_module);
     orchestrator.run(broker);

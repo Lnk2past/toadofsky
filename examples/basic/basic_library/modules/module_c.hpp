@@ -1,16 +1,17 @@
 #pragma once
 
-#include "broker/subscriber.hpp"
 #include "models/model_c.hpp"
-#include "modules/module.hpp"
 
-struct ModuleC : Module, Subscriber
+#include "toadofsky/broker/subscriber.hpp"
+#include "toadofsky/module/module.hpp"
+
+struct ModuleC : toadofsky::Module, toadofsky::Subscriber
 {
     ModuleC() = default;
     ~ModuleC() = default;
-    auto initialize(Broker &broker) -> void override;
-    auto update(Broker &broker) -> bool override;
-    auto run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void override;
+    auto initialize(toadofsky::Broker &broker) -> void override;
+    auto update(toadofsky::Broker &broker) -> bool override;
+    auto run(std::stop_token stop_token, std::latch &latch, toadofsky::Broker &broker) -> void override;
     auto finalize() -> void override;
 
     ModelC model{};
