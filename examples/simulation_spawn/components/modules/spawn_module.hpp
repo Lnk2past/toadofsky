@@ -1,21 +1,21 @@
 #pragma once
 
-#include "broker/subscriber.hpp"
-#include "modules/module.hpp"
+#include "toadofsky/broker/subscriber.hpp"
+#include "toadofsky/module/module.hpp"
 
 #include <chrono>
 #include <random>
 
 using namespace std::chrono_literals;
 
-struct SpawnModule : Module,
-                     Subscriber
+struct SpawnModule : toadofsky::Module,
+                     toadofsky::Subscriber
 {
     SpawnModule() = default;
     ~SpawnModule() = default;
-    auto initialize(Broker &broker) -> void override;
-    auto update(Broker &broker) -> bool override;
-    auto run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void override;
+    auto initialize(toadofsky::Broker &broker) -> void override;
+    auto update(toadofsky::Broker &broker) -> bool override;
+    auto run(std::stop_token stop_token, std::latch &latch, toadofsky::Broker &broker) -> void override;
     auto finalize() -> void override;
 
     std::chrono::seconds spawn_timer{1s};

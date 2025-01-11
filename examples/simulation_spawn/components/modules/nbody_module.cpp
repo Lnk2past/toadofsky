@@ -1,11 +1,12 @@
+#include "modules/nbody_module.hpp"
+
+#include "toadofsky/broker/broker.hpp"
+#include "toadofsky/broker/message.hpp"
+
 #include <fmt/format.h>
 #include <fmt/ranges.h>
 
-#include "broker/broker.hpp"
-#include "broker/message.hpp"
-#include "modules/nbody_module.hpp"
-
-auto NBodyModule::initialize(Broker &broker) -> void
+auto NBodyModule::initialize(toadofsky::Broker &broker) -> void
 {
     // model.bodies.emplace_back(std::array<double, 2>{10.0, 0.0});
     // model.bodies.emplace_back(std::array<double, 2>{-10.0, 0.0});
@@ -13,13 +14,13 @@ auto NBodyModule::initialize(Broker &broker) -> void
     broker.subscribe("NEW_ENTITY", this);
 }
 
-auto NBodyModule::update(Broker &) -> bool
+auto NBodyModule::update(toadofsky::Broker &) -> bool
 {
     for (auto message : get_messages())
     {
         if (message->topic == "NEW_ENTITY")
         {
-            model.bodies.push_back(std::get<0>(std::dynamic_pointer_cast<MessagePayload<Body>>(message)->payload));
+            model.bodies.push_back(std::get<0>(std::dynamic_pointer_cast<toadofsky::MessagePayload<Body>>(message)->payload));
             fmt::println("New entity! Now there are {} of them; newest ID={}", model.bodies.size(), model.bodies.back().id);
         }
     }
@@ -28,7 +29,7 @@ auto NBodyModule::update(Broker &) -> bool
     return time < 10.0;
 }
 
-auto NBodyModule::run(std::stop_token stop_token, std::latch &latch, Broker &broker) -> void
+auto NBodyModule::run(std::stop_token stop_token, std::latch &latch, toadofsky::Broker &broker) -> void
 {
     latch.arrive_and_wait();
     while (!stop_token.stop_requested())

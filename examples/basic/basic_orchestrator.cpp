@@ -1,8 +1,9 @@
-#include "broker/broker.hpp"
-#include "orchestrators/orchestrator.hpp"
 #include "modules/module_a.hpp"
 #include "modules/module_b.hpp"
 #include "modules/module_c.hpp"
+
+#include "toadofsky/broker/broker.hpp"
+#include "toadofsky/orchestrator/orchestrator.hpp"
 
 #include <chrono>
 #include <thread>
@@ -15,8 +16,8 @@ auto main() -> int
     auto module_b = ModuleB{};
     auto module_c = ModuleC{};
 
-    auto broker = Broker{};
-    auto orchestrator = Orchestrator{};
+    auto broker = toadofsky::Broker{};
+    auto orchestrator = toadofsky::Orchestrator{};
     orchestrator.register_model(&module_a);
     orchestrator.register_model(&module_b);
     orchestrator.register_model(&module_c);
