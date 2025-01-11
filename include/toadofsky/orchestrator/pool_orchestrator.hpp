@@ -16,6 +16,6 @@ namespace toadofsky
         auto run(Broker &broker) -> void;
 
         std::vector<Module *> modules;
-        ThreadPool<3> threadpool{};
+        ThreadPool threadpool{3};
     };
 }

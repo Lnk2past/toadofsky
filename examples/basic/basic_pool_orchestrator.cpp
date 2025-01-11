@@ -23,6 +23,7 @@ auto main() -> int
     orchestrator.register_model(&module_c);
     orchestrator.run(broker);
 
+    // TODO: can this be more ergonimic? the std::bind_front is so noisy
     auto now = std::chrono::high_resolution_clock::now();
     orchestrator.threadpool.schedule({now + 1000ms, std::bind_front(&toadofsky::Module::update, &module_c, std::ref(broker))});
     orchestrator.threadpool.schedule({now + 1500ms, std::bind_front(&toadofsky::Module::update, &module_a, std::ref(broker))});

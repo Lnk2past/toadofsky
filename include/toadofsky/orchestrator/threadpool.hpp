@@ -17,7 +17,7 @@ namespace toadofsky
         std::chrono::time_point<std::chrono::high_resolution_clock> time = std::chrono::high_resolution_clock::now();
         std::function<void(void)> function;
 
-        auto operator()() -> void
+        inline auto operator()() -> void
         {
             function();
         }
@@ -28,13 +28,12 @@ namespace toadofsky
         return t1.time > t2.time;
     }
 
-    template <std::size_t N>
     struct ThreadPool
     {
-        ThreadPool()
+        explicit ThreadPool(const std::size_t num_threads)
         {
-            threads.reserve(N);
-            for (auto i = std::size_t{}; i < N; ++i)
+            threads.reserve(num_threads);
+            for (auto i = std::size_t{}; i < num_threads; ++i)
             {
                 threads.emplace_back(std::bind_front(&ThreadPool::process, this));
             }
