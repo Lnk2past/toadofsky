@@ -14,3 +14,5 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(src)
+
+export(TARGETS toadofsky FILE "${CMAKE_BINARY_DIR}/toadofskyTargets.cmake")

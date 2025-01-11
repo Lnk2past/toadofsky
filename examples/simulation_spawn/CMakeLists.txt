@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.18.4)
 
 project(example_nbody)
 
-find_package(fmt CONFIG REQUIRED)
+include("${CMAKE_CURRENT_SOURCE_DIR}/../../build/Release/toadofskyTargets.cmake")
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../../src ${CMAKE_CURRENT_BINARY_DIR}/src)
+find_package(fmt CONFIG REQUIRED)
 
 add_executable(simulation_spawn simulation_spawn.cpp)
 

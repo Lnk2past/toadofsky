@@ -18,4 +18,5 @@ auto main() -> int
     orchestrator.register_model(&nbody_module);
     orchestrator.register_model(&spawn_module);
     orchestrator.run(broker);
+    std::this_thread::sleep_for(6s);
 }
