@@ -1,7 +1,7 @@
 #pragma once
 
 #include <latch>
-#include <thread>
+#include <stop_token>
 
 namespace toadofsky
 {

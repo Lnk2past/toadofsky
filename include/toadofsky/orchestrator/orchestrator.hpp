@@ -14,7 +14,8 @@ namespace toadofsky
 
         auto run(Broker &broker) -> void;
 
-        std::vector<Module *> modules;
-        std::vector<std::jthread> threads;
+    private:
+        std::vector<Module *> modules{};
+        std::vector<std::jthread> threads{};
     };
 }

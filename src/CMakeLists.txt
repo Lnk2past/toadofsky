@@ -5,3 +5,5 @@ target_include_directories(toadofsky PUBLIC "${CMAKE_SOURCE_DIR}/include" "${CMA
 add_subdirectory(orchestrator)
 
 target_link_libraries(toadofsky PUBLIC fmt::fmt)
+
+add_subdirectory(compose)

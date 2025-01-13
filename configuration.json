@@ -1,0 +1,12 @@
+{
+    "modules": [
+        {
+            "path": "./libtest.so",
+            "count": 1
+        },
+        {
+            "path": "./libtest_pub.so",
+            "count": 1
+        }
+    ]
+}
