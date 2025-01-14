@@ -16,7 +16,7 @@ auto SpawnModule::update(toadofsky::Broker &broker) -> bool
 {
     if (std::chrono::high_resolution_clock::now() >= time + spawn_timer)
     {
-        broker.publish<Body>("NEW_ENTITY", Body{dis(eng), dis(eng)});
+        broker.publish("NEW_ENTITY", Body{dis(eng), dis(eng)});
         time = std::chrono::high_resolution_clock::now();
     }
     return true;

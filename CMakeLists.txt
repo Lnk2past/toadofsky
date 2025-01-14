@@ -9,8 +9,6 @@ find_package(nlohmann_json CONFIG REQUIRED)
 
 add_compile_options(-std=c++20)
 add_compile_options(-Wall -Wextra -Wpedantic -Werror)
-# add_compile_options(-fsanitize=thread)
-# link_libraries(pthread tsan)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 

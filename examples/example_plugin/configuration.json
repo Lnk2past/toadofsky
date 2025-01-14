@@ -1,11 +1,11 @@
 {
     "modules": [
         {
-            "path": "./libtest.so",
+            "path": "./build/libtest_plugin.so",
             "count": 1
         },
         {
-            "path": "./libtest_pub.so",
+            "path": "./build/libtest_plugin_publisher.so",
             "count": 1
         }
     ]

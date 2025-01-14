@@ -15,7 +15,7 @@ auto ModuleC::initialize(toadofsky::Broker &broker) -> void
 auto ModuleC::update(toadofsky::Broker &broker) -> bool
 {
     model.update();
-    broker.publish<int>("FOO", model.data);
+    broker.publish("FOO", model.data);
     return true;
 }
 

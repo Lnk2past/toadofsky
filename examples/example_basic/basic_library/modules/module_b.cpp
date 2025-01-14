@@ -18,7 +18,7 @@ auto ModuleB::update(toadofsky::Broker &) -> bool
         if (message->topic == "BAR")
         {
             model.update();
-            fmt::print("Got a BAR! {}\n", std::dynamic_pointer_cast<toadofsky::MessagePayload<int, double>>(message)->payload);
+            fmt::print("Got a BAR! {}\n", toadofsky::message_cast<int, double>(message)->payload);
         }
     }
     return true;
