@@ -2,8 +2,6 @@
 
 #include "toadofsky/broker/message.hpp"
 
-#include <fmt/format.h>
-
 #include <memory>
 #include <mutex>
 #include <queue>

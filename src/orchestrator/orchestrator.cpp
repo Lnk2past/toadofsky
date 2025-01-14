@@ -2,8 +2,6 @@
 #include "toadofsky/module/module.hpp"
 #include "toadofsky/orchestrator/orchestrator.hpp"
 
-#include <fmt/format.h>
-
 #include <functional>
 #include <latch>
 
@@ -30,6 +28,7 @@ namespace toadofsky
         {
             threads.emplace_back(std::bind_front(&Module::run, module), std::ref(latch), std::ref(broker));
         }
+        std::this_thread::sleep_for(500ms);
         latch.wait();
     }
 }

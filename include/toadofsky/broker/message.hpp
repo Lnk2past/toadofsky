@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 #include <tuple>
 
@@ -26,4 +27,10 @@ namespace toadofsky
 
         std::tuple<T...> payload;
     };
+
+    template <typename... T>
+    static inline auto message_cast(std::shared_ptr<Message> message) -> std::shared_ptr<MessagePayload<T...>>
+    {
+        return std::dynamic_pointer_cast<toadofsky::MessagePayload<T...>>(message);
+    }
 }

@@ -18,8 +18,8 @@ auto ModuleA::update(toadofsky::Broker &broker) -> bool
         if (message->topic == "FOO")
         {
             model.update();
-            fmt::print("Got a FOO! {}\n", std::dynamic_pointer_cast<toadofsky::MessagePayload<int>>(message)->payload);
-            broker.publish<int, double>("BAR", model.data1, model.data2);
+            fmt::print("Got a FOO! {}\n", toadofsky::message_cast<int>(message)->payload);
+            broker.publish("BAR", model.data1, model.data2);
         }
     }
     return true;

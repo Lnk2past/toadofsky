@@ -1,0 +1,12 @@
+{
+    "modules": [
+        {
+            "path": "./build/libtest_plugin.so",
+            "count": 1
+        },
+        {
+            "path": "./build/libtest_plugin_publisher.so",
+            "count": 1
+        }
+    ]
+}

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "toadofsky/broker/message.hpp"
+#include "toadofsky/broker/subscriber.hpp"
 
 #include <algorithm>
 #include <memory>
@@ -10,7 +11,6 @@
 
 namespace toadofsky
 {
-    struct Subscriber;
     struct Broker
     {
         auto subscribe(std::string topic, Subscriber *subscriber) -> void
